@@ -1,4 +1,12 @@
 package de.dhbw.ravensburg.wp.mymoviedatabase.service;
 
-public class ArtistServiceImpl {
+import org.springframework.stereotype.Service;
+
+@Service
+public class ArtistServiceImpl implements MovieService {
+
+    public String getName() {
+        return "ArtistServiceImpl";
+    }
+
 }

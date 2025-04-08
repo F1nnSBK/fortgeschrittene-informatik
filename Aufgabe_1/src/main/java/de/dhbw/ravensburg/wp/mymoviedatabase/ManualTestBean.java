@@ -1,7 +1,6 @@
 package de.dhbw.ravensburg.wp.mymoviedatabase;
 
 import de.dhbw.ravensburg.wp.mymoviedatabase.controller.MovieControllerImpl;
-import de.dhbw.ravensburg.wp.mymoviedatabase.service.MovieServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -23,9 +22,12 @@ public class ManualTestBean {
 
     @EventListener(ApplicationReadyEvent.class)
     public void callController(){
+        // Test Movie Controller
         log.info(this.movieController.getName());
-
+        // Test Movie Service
         log.info(this.movieController.getMovieServiceName());
+        // Test Artist Service
+        log.info(this.movieController.getMovieArtistName());
     }
 
 }
