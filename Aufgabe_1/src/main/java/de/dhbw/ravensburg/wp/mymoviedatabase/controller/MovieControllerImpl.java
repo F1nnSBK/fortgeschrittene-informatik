@@ -1,19 +1,20 @@
 package de.dhbw.ravensburg.wp.mymoviedatabase.controller;
 
-import de.dhbw.ravensburg.wp.mymoviedatabase.service.ArtistServiceImpl;
-import de.dhbw.ravensburg.wp.mymoviedatabase.service.MovieServiceImpl;
+import de.dhbw.ravensburg.wp.mymoviedatabase.service.MovieService;
+import de.dhbw.ravensburg.wp.mymoviedatabase.service.ArtistService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class MovieControllerImpl {
-    private final MovieServiceImpl movieService;
-    private final ArtistServiceImpl artistService;
+public class MovieControllerImpl implements MovieController {
+    private final MovieService movieService;
+    private final ArtistService artistService;
 
     @Autowired
-    public MovieControllerImpl(MovieServiceImpl movieService){
+    public MovieControllerImpl(MovieService movieService, ArtistService artistService) {
         this.movieService = movieService;
-        this.artistService = new ArtistServiceImpl();
+        this.artistService = artistService;
     }
 
     public String getName(){
