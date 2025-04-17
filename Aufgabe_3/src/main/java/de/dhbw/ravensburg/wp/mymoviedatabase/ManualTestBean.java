@@ -120,12 +120,15 @@ public class ManualTestBean {
                 // Award anlgen
                 Award grammy = new Award("Grammy Academy", "Funniest Movie", 2024);
                 Award oscar = new Award("Oskar", "Best Movie", 2025);
+                Award bestPicture = new Award("Best Picture", "Best Picture", 2025);
 
-                movie_1.setAwards(List.of(grammy));
+                movie_3.setAwards(List.of(grammy));
                 movie_2.setAwards(List.of(oscar));
+                movie_1.setAwards(List.of(bestPicture));
 
-                grammy.setMovie(movie_1);
+                grammy.setMovie(movie_3);
                 oscar.setMovie(movie_2);
+                bestPicture.setMovie(movie_1);
 
 
                 // Filme speichern
@@ -146,17 +149,26 @@ public class ManualTestBean {
 //                log.info("-----------movie cast--------");
 //                this.movieService.getCastOfMovie("Rises").forEach(cast -> log.info(cast));
 
-                log.info("----- Test Award Oskar -----");
-                String oskarAcademy = "Oskar";
-                this.movieRepository.findAllMoviesWithAwardAcademy(oskarAcademy).forEach(movie -> {
-                        log.info(movie.getTitle() + " has award: " + oskarAcademy);
-                });
+//                log.info("----- Test Award Oskar -----");
+//                String oskarAcademy = "Oskar";
+//                this.movieRepository.findAllMoviesWithAwardAcademy(oskarAcademy).forEach(movie -> {
+//                        log.info(movie.getTitle() + " has award: " + oskarAcademy);
+//                });
+//
+//                log.info("----- Test Award Grammy -----");
+//                String grammyAcademy = "Grammy Academy";
+//                this.movieRepository.findAllMoviesWithAwardAcademy(grammyAcademy).forEach(movie -> {
+//                        log.info(movie.getTitle() + " has award: " + grammyAcademy);
+//                });
 
-                log.info("----- Test Award Grammy -----");
-                String grammyAcademy = "Grammy Academy";
-                this.movieRepository.findAllMoviesWithAwardAcademy(grammyAcademy).forEach(movie -> {
-                        log.info(movie.getTitle() + " has award: " + grammyAcademy);
+                log.info("----------- Geschachtelte Abfrage --------");
+                this.movieRepository.findMoviesWithAwardCategoryAndReleaseDate(
+                        "Best Picture",
+                        1,
+                        LocalDate.of(2014,1,1),
+                        LocalDate.of(2015,12,31)
+                ).forEach(movie -> {
+                        log.info("Movie geschachtelte Abfrage: " + movie.getTitle());
                 });
-
         }
 }
