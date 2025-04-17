@@ -45,4 +45,12 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
             @Param("param3") LocalDate firstReleaseDate,
             @Param("param4") LocalDate lastReleaseDate
     );
+
+    @Query("SELECT m FROM Movie m JOIN m.involvedCast c JOIN m.awards a WHERE c.surname = :param1 " +
+        "AND a.academy = :param2 "
+    )
+    List<Movie> findMoviesByCastMember(
+            @Param("param1") String castMember,
+            @Param("param2") String awardAcademy
+    );
 }

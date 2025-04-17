@@ -119,15 +119,15 @@ public class ManualTestBean {
 
                 // Award anlgen
                 Award grammy = new Award("Grammy Academy", "Funniest Movie", 2024);
-                Award oscar = new Award("Oskar", "Best Movie", 2025);
+                Award oscar = new Award("Oscar", "Best Movie", 2025);
                 Award bestPicture = new Award("Best Picture", "Best Picture", 2025);
 
                 movie_3.setAwards(List.of(grammy));
-                movie_2.setAwards(List.of(oscar));
+                movie_4.setAwards(List.of(oscar));
                 movie_1.setAwards(List.of(bestPicture));
 
                 grammy.setMovie(movie_3);
-                oscar.setMovie(movie_2);
+                oscar.setMovie(movie_4);
                 bestPicture.setMovie(movie_1);
 
 
@@ -169,6 +169,14 @@ public class ManualTestBean {
                         LocalDate.of(2015,12,31)
                 ).forEach(movie -> {
                         log.info("Movie geschachtelte Abfrage: " + movie.getTitle());
+                });
+
+                log.info("----------- Movies by Cast name --------");
+                this.movieRepository.findMoviesByCastMember(
+                        "Reeves",
+                        "Oscar"
+                ).forEach(movie -> {
+                        log.info("Movie Cast name Abfrage: " + movie.getTitle());
                 });
         }
 }
