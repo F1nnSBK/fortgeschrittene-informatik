@@ -1,0 +1,49 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 13px;
+}
+
+body, h2 {
+    font-weight: normal;
+}
+
+.top {
+    background-color: #1e1e1e;
+    color: white;
+    padding: 5px 0;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+}   
+
+td, th {
+    text-align: left;
+    border-bottom: 2px solid black;
+}
+
+strong {
+    color: red;
+}
+
+/* 
+ul li strong {
+    color: blue;
+} */
+
+/* .awards .awards_strong {
+    color: blue;
+} */
+
+.strong.award.reference {
+    color: blue;
+}
+
+#what .a .great #director {
+    color: green;
+}
+
+a img {
+    border: 3px solid red;
+}
